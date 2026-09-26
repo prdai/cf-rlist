@@ -13,7 +13,8 @@ A public reading list. Anyone can read it; only the owner can add, tick off, or 
 npm install
 ```
 
-Put your password and a random token in `.dev.vars` (copy `.dev.vars.example`). `.dev.vars` is gitignored.
+Put your password and a random token in `.dev.vars` (copy `.env.example`). Wrangler reads
+`.dev.vars` for local dev; `.env` is not loaded, and `.dev.vars` is gitignored.
 
 ```ini
 ADMIN_PASSWORD=...
