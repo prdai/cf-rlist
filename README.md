@@ -10,7 +10,7 @@ A public reading list. Anyone can read it; only the owner can add, tick off, or 
 ## Setup
 
 ```sh
-npm install
+bun install
 ```
 
 Put your password and a random token in `.dev.vars` (copy `.env.example`). Wrangler reads
@@ -24,7 +24,7 @@ SESSION_SECRET=...   # any long random string, e.g. `openssl rand -base64 32`
 ## Develop
 
 ```sh
-npm run dev
+bun run dev
 ```
 
 Runs in the Cloudflare `workerd` runtime. Local KV data persists in `.wrangler/`.
@@ -32,10 +32,10 @@ Runs in the Cloudflare `workerd` runtime. Local KV data persists in `.wrangler/`
 ## Deploy
 
 ```sh
-npx wrangler login
-npx wrangler secret put ADMIN_PASSWORD
-npx wrangler secret put SESSION_SECRET
-npm run deploy
+bunx wrangler login
+bunx wrangler secret put ADMIN_PASSWORD
+bunx wrangler secret put SESSION_SECRET
+bun run deploy
 ```
 
 The `RLIST` KV namespace is provisioned automatically on first deploy. Wrangler writes the
