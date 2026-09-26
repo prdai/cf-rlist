@@ -1,0 +1,63 @@
+---
+import Layout from "../layouts/Layout.astro";
+import AddForm from "../components/AddForm.astro";
+import ItemRow from "../components/ItemRow.astro";
+import { listItems } from "../lib/store";
+
+const items = await listItems();
+const todo = items.filter((item) => item.status === "todo");
+const done = items.filter((item) => item.status === "done");
+const authed = Astro.locals.authed;
+const error = Astro.url.searchParams.get("error");
+---
+
+<Layout>
+  <header>
+    <h1>reading list</h1>
+    {
+      authed ? (
+        <form method="post" action="/api/logout">
+          <button type="submit">log out</button>
+        </form>
+      ) : (
+        <a class="button" href="/login">
+          log in
+        </a>
+      )
+    }
+  </header>
+
+  {error && <p class="error">{error === "invalid-url" ? "that doesn't look like a valid URL" : "could not add that link"}</p>}
+
+  {authed && <AddForm />}
+
+  <section>
+    <h2>to read <span>{todo.length}</span></h2>
+    {
+      todo.length === 0 ? (
+        <p class="empty">nothing queued</p>
+      ) : (
+        <ul>
+          {todo.map((item) => (
+            <ItemRow item={item} authed={authed} />
+          ))}
+        </ul>
+      )
+    }
+  </section>
+
+  <section>
+    <h2>read <span>{done.length}</span></h2>
+    {
+      done.length === 0 ? (
+        <p class="empty">nothing finished yet</p>
+      ) : (
+        <ul>
+          {done.map((item) => (
+            <ItemRow item={item} authed={authed} />
+          ))}
+        </ul>
+      )
+    }
+  </section>
+</Layout>

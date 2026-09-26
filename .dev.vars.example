@@ -1,0 +1,2 @@
+ADMIN_PASSWORD_HASH=pbkdf2:sha256:100000:REPLACE_SALT:REPLACE_HASH
+SESSION_SECRET=replace-with-a-long-random-string

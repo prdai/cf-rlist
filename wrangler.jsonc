@@ -1,0 +1,9 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "cf-rlist",
+  "account_id": "6503f7d355399abee9e748d3100675d4",
+  "compatibility_date": "2026-09-26",
+  "compatibility_flags": ["nodejs_compat"],
+  "kv_namespaces": [{ "binding": "RLIST" }],
+  "routes": [{ "pattern": "rlist.prdai.dev", "custom_domain": true }]
+}
