@@ -1,0 +1,17 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const error = Astro.url.searchParams.has("error");
+---
+
+<Layout title="log in">
+  <section class="login">
+    <h1>log in</h1>
+    <form method="post" action="/api/login">
+      <input type="password" name="password" placeholder="password" autofocus required />
+      <button type="submit">enter</button>
+    </form>
+    {error && <p class="error">wrong password</p>}
+    <a href="/">back to list</a>
+  </section>
+</Layout>

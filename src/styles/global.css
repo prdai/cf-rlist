@@ -1,0 +1,183 @@
+:root {
+  color-scheme: light dark;
+  --bg: #fbfbfa;
+  --fg: #1a1a19;
+  --muted: #6b6b68;
+  --line: #e4e4e1;
+  --accent: #1a1a19;
+  --danger: #b3261e;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #131312;
+    --fg: #ececea;
+    --muted: #9a9a96;
+    --line: #2b2b29;
+    --accent: #ececea;
+    --danger: #ff6b5e;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 16px/1.5 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+main {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 48px 20px 96px;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+h1 {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+h2 {
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin: 32px 0 12px;
+}
+
+h2 span {
+  color: var(--fg);
+}
+
+section ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--line);
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.item .title {
+  flex: 1;
+  color: var(--fg);
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.item .title:hover {
+  text-decoration: underline;
+}
+
+.item.done .title {
+  color: var(--muted);
+  text-decoration: line-through;
+}
+
+.empty {
+  color: var(--muted);
+  border-bottom: 1px solid var(--line);
+  padding: 12px 0;
+  margin: 0;
+}
+
+.actions {
+  display: flex;
+  gap: 4px;
+}
+
+.actions form {
+  display: inline;
+}
+
+button,
+.button {
+  font: inherit;
+  font-size: 14px;
+  color: var(--muted);
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 3px 10px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+button:hover,
+.button:hover {
+  color: var(--fg);
+  border-color: var(--muted);
+}
+
+button.danger:hover {
+  color: var(--danger);
+  border-color: var(--danger);
+}
+
+.add {
+  display: flex;
+  gap: 8px;
+}
+
+input[type="text"],
+input[type="url"],
+input[type="password"] {
+  font: inherit;
+  flex: 1;
+  min-width: 0;
+  color: var(--fg);
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+
+input::placeholder {
+  color: var(--muted);
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--muted);
+}
+
+.login {
+  max-width: 320px;
+}
+
+.login form {
+  display: flex;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.error {
+  color: var(--danger);
+  font-size: 14px;
+}
+
+.login a {
+  color: var(--muted);
+  font-size: 14px;
+}

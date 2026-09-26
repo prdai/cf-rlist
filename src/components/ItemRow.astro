@@ -1,0 +1,36 @@
+---
+import type { Item } from "../lib/types";
+
+interface Props {
+  item: Item;
+  authed: boolean;
+}
+
+const { item, authed } = Astro.props;
+const done = item.status === "done";
+const toggleLabel = done ? "mark as unread" : "mark as read";
+---
+
+<li class:list={["item", { done }]}>
+  <a class="title" href={item.url || undefined} target="_blank" rel="noreferrer">{item.title}</a>
+  {
+    authed && (
+      <span class="actions">
+        <form method="post" action="/api/items">
+          <input type="hidden" name="action" value="toggle" />
+          <input type="hidden" name="id" value={item.id} />
+          <button type="submit" title={toggleLabel} aria-label={toggleLabel}>
+            {done ? "undo" : "done"}
+          </button>
+        </form>
+        <form method="post" action="/api/items">
+          <input type="hidden" name="action" value="delete" />
+          <input type="hidden" name="id" value={item.id} />
+          <button type="submit" class="danger" title="delete" aria-label="delete">
+            x
+          </button>
+        </form>
+      </span>
+    )
+  }
+</li>
