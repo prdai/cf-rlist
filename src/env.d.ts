@@ -1,7 +1,7 @@
 /// <reference types="astro/client" />
 
 interface Env {
-  ADMIN_PASSWORD_HASH: string;
+  ADMIN_PASSWORD: string;
   SESSION_SECRET: string;
 }
 

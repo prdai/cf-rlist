@@ -9,7 +9,6 @@
     "preview": "wrangler types && astro preview",
     "deploy": "wrangler types && astro check && astro build && wrangler deploy",
     "types": "wrangler types",
-    "hash-password": "node scripts/hash-password.mjs",
     "astro": "astro"
   },
   "dependencies": {
